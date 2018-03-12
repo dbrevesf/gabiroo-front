@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TweetService } from '../tweet.service';
+import { Tweet } from '../tweet';
 
 @Component({
   selector: 'app-tweet-box',
@@ -7,30 +9,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TweetBoxComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tweetService: TweetService) { }
 
-  tweetlist: string[] = [];
+  tweetlist: Tweet[];
   tweetCounter = 0;
   currentTweet: string;
+  currentTweetOrigin: string;
 
   ngOnInit() {
 
-  	this.tweetlist[0] = "BREAKING: The world's problems will not be solved by arguing with strangers on Twitter. We'll update you when we have more on this story. UPDATE: The world's problems will still not be solved by arguing with strangers on Twitter, even with 280 characters to play with.";
-  	this.tweetlist[1] = "Ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding ding...room for more bell dings with #280characters";
-  	this.tweetlist[2] = "Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regnant of the Seven Kingdoms, Breaker of Chains and Mother of Dragons.";
-  	this.getTweet();
+  	this.getTweets();
+  }
+
+  getTweets(): void {
+
+    this.tweetService.getTweet().subscribe(data => this.assignTweetsToList(data));
+  }
+
+  assignTweetsToList(returnedData: Tweet[]): void {
+
+    this.tweetlist = returnedData;
+    this.getTweet();
   }
 
   getTweet(): void {
-	
-  	if(this.tweetCounter < this.tweetlist.length) {
-  		this.currentTweet = this.tweetlist[this.tweetCounter];
-	} else {
-		this.currentTweet = "There's any tweet to show";
-	}
-  	this.tweetCounter++;
+
+    if(this.tweetlist) {
+      if(this.tweetCounter < this.tweetlist.length) {
+        this.currentTweet = this.tweetlist[this.tweetCounter].text;  
+        this.currentTweetOrigin = this.tweetlist[this.tweetCounter].origin;
+        this.tweetCounter++;
+      } else {
+        this.currentTweet = "There's no tweet to be shown";
+        this.currentTweetOrigin = "Void";
+      }
+    } else {
+      this.currentTweet = "There's no tweet to be shown";
+      this.currentTweetOrigin = "Void";
+    }    
+  	
+    
   }
-
-
 
 }
