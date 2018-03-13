@@ -1,10 +1,12 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">Gabiroo</h5>
-    <h5 class="card-title">{{currentTweetOrigin}}</h5>
+    <h5 class="card-title">{{currentTweetOrigin}} - {{currentTweetId}}</h5>
+
     <p class="card-text">{{currentTweet}}</p>
-    <button type="button" class="btn btn-success btn-lg" (click)="getTweet();">Good</button>
-	<button type="button" class="btn btn-danger btn-lg" (click)="getTweet();">Bad</button>
-	<button type="button" class="btn btn-warning btn-lg" (click)="getTweet();">Ignore</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="postSentiment(true);">Good</button>
+	<button type="button" class="btn btn-danger btn-lg" (click)="postSentiment(false);">Bad</button>
+	<button type="button" class="btn btn-warning btn-lg" (click)="ignoreTweet();">Ignore</button>
+	<!-- <button type="button" class="btn btn-primary btn-lg" (click)="getTweets();">Get Tweets</button> -->
   </div>
 </div>

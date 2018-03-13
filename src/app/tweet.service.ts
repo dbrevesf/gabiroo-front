@@ -5,20 +5,35 @@ import { catchError, map, tap} from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from './message.service';
 import { Tweet } from './tweet';
+import { TweetSentiment } from './tweet-sentiment';
+
+const httpOptions = {
+	headers: new HttpHeaders({
+    	'Content-Type':  'application/json',
+    	'Authorization': 'my-auth-token'
+  	})
+};
 
 @Injectable()
 export class TweetService {
 
-	private tweetUrl = 'http://127.0.0.1:5000/tweets';
+	private tweetUrl = 'http://127.0.0.1:5000';
+
+
 
 	constructor(private http: HttpClient,
 				private messageService: MessageService) { }
 
 	getTweet(): Observable<Tweet[]> {
 
-		const url = this.tweetUrl;
-		return this.http.get<Tweet[]>(url).pipe(
-			tap(tweets => this.log("TESTE")));
+		const url = this.tweetUrl + '/tweets';
+		return this.http.get<Tweet[]>(url);
+	}
+
+	postSentiment(sentiment: TweetSentiment): Observable<string>{
+
+		const url = this.tweetUrl + '/sentiment';
+		return this.http.post<string>(url, sentiment, httpOptions);
 	}
 
 	private log(message: string) {
