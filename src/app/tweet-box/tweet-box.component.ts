@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TweetService } from '../tweet.service';
 import { Tweet } from '../tweet';
 import { TweetSentiment } from '../tweet-sentiment';
+import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -23,6 +24,18 @@ export class TweetBoxComponent implements OnInit {
   ngOnInit() {
 
   	this.getTweets();
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    console.log(event.key);
+    if(event.key === 'g') {
+      this.postSentiment(1);
+    } else if (event.key === 'b') {
+      this.postSentiment(0);
+    } else if (event.key === 'i') {
+      this.postSentiment(2);
+    }
   }
 
   getTweets(): void {
@@ -61,7 +74,7 @@ export class TweetBoxComponent implements OnInit {
     } 
   }
 
-  postSentiment(sentiment: boolean): void {
+  postSentiment(sentiment: number): void {
 
     let tweetSentiment = new TweetSentiment();
     tweetSentiment.id = this.currentTweetId;
@@ -70,10 +83,4 @@ export class TweetBoxComponent implements OnInit {
     tweetSentiment.sentiment = sentiment;
     this.tweetService.postSentiment(tweetSentiment).subscribe(data => this.tweetSentimentReturn(data));
   }
-
-  ignoreTweet(): void {
-
-    this.getTweet();
-  }
-
 }
