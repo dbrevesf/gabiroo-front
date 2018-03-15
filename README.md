@@ -1,29 +1,9 @@
-# gabiroo
-The good news app
+
 # Gabiroo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+This project is being developed as a filter of good news, based on my own definition of good. My aim with this project is to implement a Natural Language Processing (NLP) algorithm which will select, based on past news and my classification, some good news and post them on a Twitter account (@projeto_gabiroo).
 
-## Development server
+## gabiroo_front
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It's the frontend part of the main project. I'm developing with Angular.js and Bootstrap in order to achieve a clean design spending not much time. This is my first personal project in Angular.js. 
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
