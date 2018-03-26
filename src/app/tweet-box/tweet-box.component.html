@@ -1,12 +1,14 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Gabiroo</h5>
-    <h5 class="card-title">{{currentTweetOrigin}} - {{currentTweetId}}</h5>
+<div class="container">
+	<div class="card">
+	  <div class="card-body">
+	    <h5 class="card-title">Gabiroo</h5>
+	    <h5 class="card-title">{{currentTweetOrigin}} - {{currentTweetId}}</h5>
 
-    <p class="card-text">{{currentTweet}}</p>
-    <button type="button" class="btn btn-success btn-lg" (click)="postSentiment(1);">Good</button>
-	<button type="button" class="btn btn-danger btn-lg" (click)="postSentiment(0);">Bad</button>
-	<button type="button" class="btn btn-warning btn-lg" (click)="postSentiment(2);">Ignore</button>
-	<!-- <button type="button" class="btn btn-primary btn-lg" (click)="getTweets();">Get Tweets</button> -->
-  </div>
+	    <p class="card-text">{{currentTweet}}</p>
+	    <button type="button" class="btn btn-success btn-lg" (click)="postSentiment(2);">Good</button>
+		<button type="button" class="btn btn-danger btn-lg" (click)="postSentiment(1);">Bad</button>
+		<button type="button" class="btn btn-warning btn-lg" (click)="postSentiment(3);">Ignore</button>
+		<!-- <button type="button" class="btn btn-primary btn-lg" (click)="getTweets();">Get Tweets</button> -->
+	  </div>
+	</div>
 </div>

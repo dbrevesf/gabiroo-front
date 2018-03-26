@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,4 @@ import { HostListener } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-
-
-  @HostListener('document:keypress', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) { 
-    console.log(event.key);
-  }
-
 }

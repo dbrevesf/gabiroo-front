@@ -30,6 +30,19 @@ export class TweetService {
 		return this.http.get<Tweet[]>(url);
 	}
 
+
+	getGoodNews(): Observable<Tweet[]>{
+
+		const url = this.tweetUrl + '/goodnews';
+		return this.http.get<Tweet[]>(url);
+	}
+
+	postGoodNews(goodNews: Tweet): Observable<string>{
+
+		const url = this.tweetUrl + '/goodnews';
+		return this.http.post<string>(url, goodNews, httpOptions);
+	}
+
 	postSentiment(sentiment: TweetSentiment): Observable<string>{
 
 		const url = this.tweetUrl + '/sentiment';

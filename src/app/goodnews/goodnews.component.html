@@ -1,0 +1,11 @@
+<div class="container">
+	<div *ngIf="tweetList">
+		There are {{tweetList.length}} Good News!!! :)
+	</div>
+	<a *ngFor="let tweet of tweetList">
+		<p>
+			<button type="button" class="btn btn-primary btn-small" (click)="publishGoodNews(tweet);">Tweet</button>	
+			{{tweet.text}}
+		</p>
+	</a>
+</div>

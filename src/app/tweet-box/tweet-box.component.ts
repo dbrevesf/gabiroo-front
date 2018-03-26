@@ -30,11 +30,11 @@ export class TweetBoxComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) { 
     console.log(event.key);
     if(event.key === 'g') {
-      this.postSentiment(1);
-    } else if (event.key === 'b') {
-      this.postSentiment(0);
-    } else if (event.key === 'i') {
       this.postSentiment(2);
+    } else if (event.key === 'b') {
+      this.postSentiment(1);
+    } else if (event.key === 'i') {
+      this.postSentiment(3);
     }
   }
 
